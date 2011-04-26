@@ -1,0 +1,19 @@
+Here is few scripts to work with pdf files.
+They communicate with rails application via active messaging.
+-----------------------------------------------------------------
+rip_server(RS) - to parse pdf to images and pdfs
+pdf_create(PC) - to create pdf from fo(xml) file
+
+RS uses:
+  [*] RMagick - https://github.com/rmagick/rmagick
+  [*] builder - https://github.com/jimweirich/builder
+  [*] AMQP    - https://github.com/tmm1/amqp
+  [*] json    - https://github.com/flori/json
+
+PC uses:
+  [*] AMQP    - https://github.com/tmm1/amqp
+  [*] json    - https://github.com/flori/json
+  [*] FOP     - http://xmlgraphics.apache.org/fop/index.html
+-----------------------------------------------------------------
+by Sfate, 2011
+
