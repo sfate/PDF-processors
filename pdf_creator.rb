@@ -53,7 +53,7 @@ def create_new_file(recieved_message, request)
 end
 
 recieved_message = ""
-AMQP.start(:host => 'sloboda-studio.com', :port => '5672') do
+AMQP.start(:host => 'localhost', :port => '5672') do
 
   if_mesage_is_not_nil = false
   MQ.queue('create_send').subscribe(:ack => true) do |h,m|

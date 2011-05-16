@@ -82,7 +82,7 @@ def parse_new_file(recieved_message, request)
         #parse pdf file via ImageMagick
         #images_list = Magick::ImageList.new(recieved_message["src"])
         puts "  Could take a while..."
-      make_pngs = "convert -density 300 #{recieved_message['src']} #{path}/#{name_of_pdf}_Page%03d.png"
+      make_pngs = "convert #{recieved_message['src']} #{path}/#{name_of_pdf}_Page%03d.png" #-density 300
       system make_pngs
       Dir.foreach(path) do |image|
          array_of_full_images_info.push(Magick::Image.ping("#{path}/#{image}")) if (image.match(/Page/))
@@ -90,13 +90,13 @@ def parse_new_file(recieved_message, request)
       images_list =
       puts "  ...done"
 
-      puts "[*]vector images..."
+    #  puts "[*]vector images..."
       #parse pdf file via PDFtk
         #make_pdfs = "pdftk #{recieved_message['src']} burst output #{path}/#{name_of_pdf}_Page%03d.pdf"
         #system make_pdfs
-        puts "    no need of that...\n  [-]exiting parsing to pdfs..."
-      puts "  ...done"
-
+     #   puts "    no need of that...\n  [-]exiting parsing to pdfs..."
+      #puts "  ...done"
+	puts "array_of_full_images_info: #{array_of_full_images_info}"
       array_of_full_images_info.each do |img|
         image = img[0]
         image_name = File.basename(image.filename)
@@ -135,7 +135,7 @@ def parse_new_file(recieved_message, request)
 end
 
 
-AMQP.start(:host => 'sloboda-studio.com', :port => '5672') do
+AMQP.start(:host => 'localhost', :port => '5672') do
   recieved_message = ""
   MQ.queue('rip_send').subscribe(:ack => true) do |h,m|
        puts m
