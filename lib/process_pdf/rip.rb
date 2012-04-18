@@ -1,5 +1,5 @@
 module ProcessPDF
-  class RIP
+  class Rip
 
     def initialize(options={})
       @pdf_file = options["file"]
