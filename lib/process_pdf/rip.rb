@@ -13,7 +13,7 @@ module ProcessPDF
       #parse pdf file via ImageMagick
       make_pngs = "convert #{@pdf_file} #{path}/#{pdf_name}_Page%03d.png" #-density 300
       unless system make_pngs
-        raise StandardError, "Can't parse pdf, case:\n#{`makepngs`}"
+        raise StandardError, "Can't parse pdf, case:\n"+`#{makepngs}`
       end
       Dir.foreach(out_path) do |image|
         object_images_array.push(Magick::Image.ping("#{out_path}/#{image}")) if (image.match(/Page/))
