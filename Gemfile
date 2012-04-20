@@ -7,10 +7,6 @@ gem 'rmagick', :require => 'RMagick'
 # use json for jobs sending
 gem 'json'
 
-# use messsaging for jobs exchange
-gem 'tmm1-amqp', :require => 'mq'
-gem 'eventmachine'
-
 # form fo file for fop
 gem 'builder'
 

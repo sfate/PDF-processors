@@ -1,11 +1,11 @@
 require 'builder'
 require 'RMagick'
-require 'process_pdf/rip'
-require 'process_pdf/create'
+require 'lib/process_pdf/rip'
+require 'lib/process_pdf/create'
 
-class ProcessPDF
+module ProcessPDF
   def VERSION
-    0.0.1
+    '0.0.1'
   end
 end
 
